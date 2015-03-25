@@ -194,7 +194,7 @@ class TemplateRegistry(object):
             raise SubmitException("Incorrect size of nonce. Expected 8 chars")
 
         # Check for duplicated submit
-        if not job.register_submit(extranonce1_bin, extranonce2, ntime, nonce):
+        if not job.register_submit(extranonce1_bin, extranonce2.lower(), ntime.lower(), nonce.lower()):
             log.info("Duplicate from %s, (%s %s %s %s)" % \
                     (worker_name, binascii.hexlify(extranonce1_bin), extranonce2, ntime, nonce))
             raise SubmitException("Duplicate share")
